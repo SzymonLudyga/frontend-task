@@ -1,9 +1,10 @@
 import {
-    USER_LIST_RECEIVED
+    USER_LIST_RECEIVED, USER_DETAILS
 } from '../actions/users';
 
 const initialState = {
-    userList: []
+    userList: [],
+    detailed: null
 };
 
 export default function users(state = initialState, action) {
@@ -11,6 +12,12 @@ export default function users(state = initialState, action) {
         return {
             ...state,
             userList: action.userList
+        };
+    }
+    if (action.type === USER_DETAILS) {
+        return {
+            ...state,
+            detailed: action.userDetails
         };
     }
     return state;
