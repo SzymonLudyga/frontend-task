@@ -1,10 +1,11 @@
 import {
-    USER_LIST_RECEIVED, USER_DETAILS
+    USER_LIST_RECEIVED, USER_DETAILS_RECEIVED, TOTAL_NUMBER_RECEIVED
 } from '../actions/users';
 
 const initialState = {
     userList: [],
-    detailed: null
+    detailed: null,
+    total: null
 };
 
 export default function users(state = initialState, action) {
@@ -14,10 +15,16 @@ export default function users(state = initialState, action) {
             userList: action.userList
         };
     }
-    if (action.type === USER_DETAILS) {
+    if (action.type === USER_DETAILS_RECEIVED) {
         return {
             ...state,
             detailed: action.userDetails
+        };
+    }
+    if (action.type === TOTAL_NUMBER_RECEIVED) {
+        return {
+            ...state,
+            total: action.total
         };
     }
     return state;
